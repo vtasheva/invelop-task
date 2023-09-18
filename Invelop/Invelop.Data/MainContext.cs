@@ -33,7 +33,22 @@ public class MainContext : DbContext
             .HasKey(x => x.Id);
 
         modelBuilder.Entity<ContactDetail>()
+            .Property(x => x.FirstName).HasMaxLength(50);
+
+        modelBuilder.Entity<ContactDetail>()
+            .Property(x => x.Surname).HasMaxLength(50);
+
+        modelBuilder.Entity<ContactDetail>()
             .Property(x => x.DateOfBirth).HasColumnType("Date");
+
+        modelBuilder.Entity<ContactDetail>()
+            .Property(x => x.Address).HasMaxLength(250);
+
+        modelBuilder.Entity<ContactDetail>()
+            .Property(x => x.PhoneNumber).HasMaxLength(50);
+
+        modelBuilder.Entity<ContactDetail>()
+            .Property(x => x.IBAN).HasMaxLength(50);
     }
 
     public DbSet<ContactDetail> ContactDetails { get; set; }
