@@ -1,4 +1,7 @@
 using Invelop.Data;
+using Invelop.Data.Abstractions;
+using Invelop.Data.Repositories;
+using Invelop.Domain.ContactDetails.Queries;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,11 +17,15 @@ public class Program
 
         builder.Services.AddCors();
 
+        AddMediatR(builder.Services);
+
         builder.Services
             .AddControllers();
 
+
         builder.Services
-            .AddDbContext<MainContext>();
+            .AddDbContext<MainContext>()
+            .AddTransient<IContactDetailRepository, ContactDetailRepository>();
 
         var app = builder.Build();
 
@@ -50,5 +57,13 @@ public class Program
 
         context.Database.EnsureCreated();
         context.Database.Migrate();
+    }
+
+    private static void AddMediatR(IServiceCollection services)
+    {
+        var assembly = typeof(GetContactDetailByIdQuery).Assembly;
+
+        services.AddMediatR(configuration =>
+            configuration.RegisterServicesFromAssembly(assembly));
     }
 }
