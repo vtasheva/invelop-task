@@ -20,7 +20,6 @@ export class ContactDetailsEffects {
         return this.contactDetailsService.getContactDetails()
           .pipe(
             map((response) => {
-              console.log(response);
               return ContactDetailsActions.getContactDetailsSuccess({data: response});
             }),
             catchError((error: HttpErrorResponse) => {

@@ -14,15 +14,6 @@ export class ContactDetailsComponent implements OnInit {
 
   contactDetails$: Observable<Array<ContactDetail>>;
 
-  cols: any[] = [
-    { field: 'firstName', header: 'First Name' },
-    { field: 'surname', header: 'Surname' },
-    { field: 'dateOfBirth', header: 'Date of Birth' },
-    { field: 'address', header: 'Address' },
-    { field: 'phoneNumber', header: 'Phone Number' },
-    { field: 'iban', header: 'IBAN' },
-  ];
-
   constructor(private store: Store) {
     this.contactDetails$ = this.store.select(selectors.contactDetails);
   }
