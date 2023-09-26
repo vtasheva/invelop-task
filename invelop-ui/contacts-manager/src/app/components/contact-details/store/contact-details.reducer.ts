@@ -5,11 +5,13 @@ import { ContactDetail } from 'src/app/models/contact-detail.model';
 export const contactDetailsFeatureKey = 'contactDetails';
 
 export interface State {
-  contactDetails: Array<ContactDetail>
+  contactDetails: Array<ContactDetail>,
+  currentContactDetail: ContactDetail
 }
 
 export const initialState: State = {
-  contactDetails: []
+  contactDetails: [],
+  currentContactDetail: {} as ContactDetail,
 };
 
 export const contactDetailsReducer = createReducer(
@@ -19,6 +21,17 @@ export const contactDetailsReducer = createReducer(
       ...state,
       contactDetails: action.data
     })
-  )
+  ),
+  on(ContactDetailsActions.deleteContactDetailSuccess,
+    (state, action) => ({
+      ...state,
+      contactDetails: state.contactDetails.filter(x => x.id != action.id)
+    })
+  ),
+  on(ContactDetailsActions.getContactDetailByIdSuccess,
+    (state, action) => ({
+      ...state,
+      currentContactDetail: action.data as ContactDetail
+    }))
 );
 

@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+textarea:focus ~ label,
+textarea ~ label {
+  top: -.75em!important;
+  font-size: 12px!important;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.row {
+    margin-top: 2em;
+}

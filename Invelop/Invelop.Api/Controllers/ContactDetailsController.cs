@@ -24,7 +24,7 @@ public class ContactDetailsController : ControllerBase
         return Ok(await _mediator.Send(query));
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id:int}")]
     public async Task<IActionResult> Get(int id)
     {
         var query = new GetContactDetailByIdQuery
@@ -36,20 +36,20 @@ public class ContactDetailsController : ControllerBase
     }
 
     [HttpPost]
-    public async void Post([FromBody] AddContactDetailsCommand command)
+    public async Task Post([FromBody] AddContactDetailsCommand command)
     {
         await _mediator.Send(command);
     }
 
     [HttpPut("{id}")]
-    public async void Put(int id, [FromBody] UpdateContactDetailsCommand command)
+    public async Task Put(int id, [FromBody] UpdateContactDetailsCommand command)
     {
         command.Id = id;
         await _mediator.Send(command);
     }
 
-    [HttpDelete("{id}")]
-    public async void Delete(int id)
+    [HttpDelete]
+    public async Task Delete(int id)
     {
         var command = new DeleteContactDetailCommand
         {

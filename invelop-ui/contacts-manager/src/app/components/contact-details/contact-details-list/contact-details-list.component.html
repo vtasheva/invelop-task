@@ -1,0 +1,34 @@
+<ng-container>
+    <div class="container">
+        <h3 class="left-align">Contact details</h3>
+        <p-button (onClick)="addNewContactDetail()" class="right-align">New</p-button>
+    </div>
+    <div>
+        <p-table *ngIf="contactDetails$" [value]="(contactDetails$ | async) ?? []" [resizableColumns]="true">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th pResizableColumn>First Name</th>  
+                    <th pResizableColumn>Surname</th>  
+                    <th pResizableColumn>Date Of Birth</th>  
+                    <th pResizableColumn>Address</th>  
+                    <th pResizableColumn>Phone Number</th>  
+                    <th pResizableColumn>IBAN</th>  
+                    <th></th>
+                    <th></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-detail>
+                <tr>
+                    <td>{{ detail.firstName }}</td>
+                    <td>{{ detail.surname }}</td>
+                    <td>{{ detail.dateOfBirth }}</td>
+                    <td>{{ detail.address }}</td>
+                    <td>{{ detail.phoneNumber }}</td>
+                    <td>{{ detail.iban }}</td>
+                    <td><p-button (onClick)="updateContactDetail(detail.id)">Update</p-button></td>
+                    <td><p-button (onClick)="deleteContactDetail(detail.id)">Delete</p-button></td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</ng-container>

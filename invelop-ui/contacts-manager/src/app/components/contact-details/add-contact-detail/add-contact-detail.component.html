@@ -1,0 +1,54 @@
+<ng-container>
+    <div class="container">
+        <h3 class="left-align">Create new contact detail</h3>
+    </div>
+    <div>
+        <div class="flex flex-row">
+            <div class="p-inputgroup">
+                <span class="p-float-label">
+                    <input type="text" id="firstname" pInputText [(ngModel)]="contactDetail.firstName" />
+                    <label htmlFor="firstname">Username</label>
+                </span>
+            </div>
+            <div class="p-inputgroup">
+                <span class="p-float-label">
+                    <input type="text" id="surname" pInputText placeholder="Surname" [(ngModel)]="contactDetail.surname" />
+                    <label htmlFor="surnmae">Surname</label>
+                </span>
+            </div>
+        </div>
+        <div class="flex flex-row">
+            <div class="p-inputgroup">
+                <span class="p-float-label">
+                    <p-calendar id="dateofbirth" [(ngModel)]="contactDetail.dateOfBirth"></p-calendar>
+                    <label htmlFor="dateofbirth">Date of Birth</label>
+                </span>
+            </div>
+            <div class="p-inputgroup">
+                <span class="p-float-label">
+                    <input type="text" pInputText id="phonenumber" placeholder="Phone Number" [(ngModel)]="contactDetail.phoneNumber" />
+                    <label htmlFor="phonenumber">Phone Number</label>
+                </span>
+            </div>          
+            <div class="p-inputgroup">
+                <span class="p-float-label">
+                    <input type="text" pInputText id="iban" placeholder="IBAN" [(ngModel)]="contactDetail.iban" />
+                    <label htmlFor="iban">IBAN</label>
+                </span>
+            </div>              
+        </div>
+
+        <div class="flex flex-row">
+            <div class="p-inputgroup">
+                <span class="p-float-label">
+                    <textarea rows="5" cols="30" pInputTextarea id="address" [(ngModel)]="contactDetail.address"></textarea>
+                    <label htmlFor="address">Address</label>
+                </span>
+            </div>
+        </div>
+
+        <div class="right-align">
+            <p-button (onClick)="saveContactDetail()">Save</p-button>
+        </div>
+    </div>
+</ng-container>

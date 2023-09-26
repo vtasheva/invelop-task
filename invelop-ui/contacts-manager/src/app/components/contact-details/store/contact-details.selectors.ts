@@ -7,3 +7,8 @@ export const contactDetails = createSelector(
     contactDetailsFeatureSelector,
     (state: fromContactDetails.State) => state.contactDetails
 )
+
+export const currentContactDetail = createSelector(
+    contactDetailsFeatureSelector,
+    (state: fromContactDetails.State) => state.currentContactDetail
+)
