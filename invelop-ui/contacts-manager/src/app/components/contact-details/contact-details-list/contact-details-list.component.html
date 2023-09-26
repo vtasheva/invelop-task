@@ -1,9 +1,11 @@
 <ng-container>
-    <div class="container">
-        <h3 class="left-align">Contact details</h3>
+    <div class="row">
+        <h3>Contact details</h3>
+    </div>
+    <div class="row">
         <p-button (onClick)="addNewContactDetail()" class="right-align">New</p-button>
     </div>
-    <div>
+    <div class="row">
         <p-table *ngIf="contactDetails$" [value]="(contactDetails$ | async) ?? []" [resizableColumns]="true">
             <ng-template pTemplate="header" let-columns>
                 <tr>
