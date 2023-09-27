@@ -1,9 +1,11 @@
+using Invelop.Api.Converters;
 using Invelop.Data;
 using Invelop.Data.Abstractions;
 using Invelop.Data.Repositories;
 using Invelop.Domain.ContactDetails.Queries;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel;
 
 namespace Invelop.Api;
 
@@ -20,13 +22,17 @@ public class Program
         AddMediatR(builder.Services);
 
         builder.Services
-            .AddControllers();
-
+            .AddControllers()
+            .AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Converters.Add(new JsonDateTimeConverter());
+            });
 
         builder.Services
             .AddDbContext<MainContext>()
             .AddTransient<IContactDetailRepository, ContactDetailRepository>();
 
+       
         var app = builder.Build();
 
         app.UseHttpsRedirection();
@@ -39,6 +45,7 @@ public class Program
                 .AllowAnyHeader();
         });
 
+        
         //app.UseAuthentication();
 
         //app.UseAuthorization();

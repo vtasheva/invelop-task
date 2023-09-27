@@ -20,6 +20,12 @@ export class ContactDetailsEffects {
         return this.contactDetailsService.getContactDetails()
           .pipe(
             map((response) => {
+              return response.map(x => {
+                x.dateOfBirth = new Date(x.dateOfBirth);
+                return x;
+              });
+            }),
+            map((response) => {
               return ContactDetailsActions.getContactDetailsSuccess({data: response});
             }),
             catchError((error: HttpErrorResponse) => {
@@ -91,6 +97,10 @@ export class ContactDetailsEffects {
       switchMap((props) => {
         return this.contactDetailsService.getContactDetailById(props.id)
           .pipe(
+            map((response) => {
+              response.dateOfBirth = new Date(response.dateOfBirth);
+              return response;
+            }),
             map((response) => ContactDetailsActions.getContactDetailByIdSuccess({data: response})),
             catchError((error: HttpErrorResponse) => {
               return of(ContactDetailsActions.createContactDetailFailure(

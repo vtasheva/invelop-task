@@ -11,7 +11,7 @@
                 <tr>
                     <th pResizableColumn>First Name</th>  
                     <th pResizableColumn>Surname</th>  
-                    <th pResizableColumn>Date Of Birth</th>  
+                    <th pResizableColumn>Date of Birth</th>  
                     <th pResizableColumn>Address</th>  
                     <th pResizableColumn>Phone Number</th>  
                     <th pResizableColumn>IBAN</th>  
@@ -23,7 +23,7 @@
                 <tr>
                     <td>{{ detail.firstName }}</td>
                     <td>{{ detail.surname }}</td>
-                    <td>{{ detail.dateOfBirth }}</td>
+                    <td>{{ detail.dateOfBirth | date: 'yyyy-MM-dd' }}</td>
                     <td>{{ detail.address }}</td>
                     <td>{{ detail.phoneNumber }}</td>
                     <td>{{ detail.iban }}</td>

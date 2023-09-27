@@ -1,54 +1,67 @@
 <ng-container>
-    <div class="container">
-        <h3 class="left-align">Create new contact detail</h3>
-    </div>
-    <div>
-        <div class="flex flex-row">
-            <div class="p-inputgroup">
-                <span class="p-float-label">
-                    <input type="text" id="firstname" pInputText [(ngModel)]="contactDetail.firstName" />
-                    <label htmlFor="firstname">Username</label>
-                </span>
-            </div>
-            <div class="p-inputgroup">
-                <span class="p-float-label">
-                    <input type="text" id="surname" pInputText placeholder="Surname" [(ngModel)]="contactDetail.surname" />
-                    <label htmlFor="surnmae">Surname</label>
-                </span>
-            </div>
-        </div>
-        <div class="flex flex-row">
-            <div class="p-inputgroup">
-                <span class="p-float-label">
-                    <p-calendar id="dateofbirth" [(ngModel)]="contactDetail.dateOfBirth"></p-calendar>
-                    <label htmlFor="dateofbirth">Date of Birth</label>
-                </span>
-            </div>
-            <div class="p-inputgroup">
-                <span class="p-float-label">
-                    <input type="text" pInputText id="phonenumber" placeholder="Phone Number" [(ngModel)]="contactDetail.phoneNumber" />
-                    <label htmlFor="phonenumber">Phone Number</label>
-                </span>
-            </div>          
-            <div class="p-inputgroup">
-                <span class="p-float-label">
-                    <input type="text" pInputText id="iban" placeholder="IBAN" [(ngModel)]="contactDetail.iban" />
-                    <label htmlFor="iban">IBAN</label>
-                </span>
-            </div>              
-        </div>
+    <h3 class="left-align">Create contact detail</h3>
+    <div class="card">
+        <div *ngIf="contactDetailForm" class="formgrid">
+            <form [formGroup]="contactDetailForm" (ngSubmit)="saveContactDetail()">
+                <div class="row flex">
+                    <div class="field col-12 md:col-6">
+                        <div class="p-inputgroup">
+                            <span class="p-float-label">
+                                <input type="text" id="firstname" pInputText formControlName="firstName" />
+                                <label htmlFor="firstname">First Name</label>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field col-12 md:col-6">
+                        <div class="p-inputgroup">
+                            <span class="p-float-label">
+                                <input type="text" id="surname" pInputText placeholder="Surname" formControlName="surname" />
+                                <label htmlFor="surnmae">Surname</label>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="field col-12">
+                        <div class="p-inputgroup">
+                            <span class="p-float-label">
+                                <textarea rows="5" cols="30" pInputTextarea id="address" formControlName="address" class="w-full"></textarea>
+                                <label htmlFor="address">Address</label>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row details">
+                    <div class="field">
+                        <div class="p-inputgroup">
+                            <span class="p-float-label">
+                                <p-calendar id="dateofbirth" formControlName="dateOfBirth" dateFormat="yy-mm-dd" [monthNavigator]="true" [yearNavigator]="true"></p-calendar>
+                                <label htmlFor="dateofbirth">Date of Birth</label>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="p-inputgroup">
+                            <span class="p-float-label">
+                                <input type="text" pInputText id="phonenumber" placeholder="Phone Number" formControlName="phoneNumber" />
+                                <label htmlFor="phonenumber">Phone Number</label>
+                            </span>
+                        </div>   
+                    </div>      
+                    <div class="field">
+                        <div class="p-inputgroup">
+                            <span class="p-float-label">
+                                <input type="text" pInputText id="iban" placeholder="IBAN" formControlName="iban" />
+                                <label htmlFor="iban">IBAN</label>
+                            </span>
+                        </div> 
+                    </div> 
+                </div>
 
-        <div class="flex flex-row">
-            <div class="p-inputgroup">
-                <span class="p-float-label">
-                    <textarea rows="5" cols="30" pInputTextarea id="address" [(ngModel)]="contactDetail.address"></textarea>
-                    <label htmlFor="address">Address</label>
-                </span>
-            </div>
-        </div>
-
-        <div class="right-align">
-            <p-button (onClick)="saveContactDetail()">Save</p-button>
+                <div class="right-align">
+                    <p-button type="submit" [disabled]="!contactDetailForm.valid">Save</p-button>
+                </div>
+            </form>
         </div>
     </div>
 </ng-container>

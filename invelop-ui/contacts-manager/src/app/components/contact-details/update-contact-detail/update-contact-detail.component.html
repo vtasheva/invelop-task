@@ -8,7 +8,7 @@
                         <div class="p-inputgroup">
                             <span class="p-float-label">
                                 <input type="text" id="firstname" pInputText formControlName="firstName" />
-                                <label htmlFor="firstname">Username</label>
+                                <label htmlFor="firstname">First Name</label>
                             </span>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                     <div class="field">
                         <div class="p-inputgroup">
                             <span class="p-float-label">
-                                <p-calendar id="dateofbirth" formControlName="dateOfBirth"></p-calendar>
+                                <p-calendar id="dateofbirth" formControlName="dateOfBirth" dateFormat="yy-mm-dd" [monthNavigator]="true" [yearNavigator]="true"></p-calendar>
                                 <label htmlFor="dateofbirth">Date of Birth</label>
                             </span>
                         </div>

@@ -13,7 +13,7 @@ public class MainContext : DbContext
 {
     private readonly IConfiguration _configuration;
 
-    public MainContext(IConfiguration configuration)
+    public MainContext(IConfiguration configuration) : base()
     {
         _configuration = configuration;
     }
