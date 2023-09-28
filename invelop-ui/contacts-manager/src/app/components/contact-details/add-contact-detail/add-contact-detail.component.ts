@@ -32,6 +32,7 @@ export class AddContactDetailComponent implements OnInit {
       address: new FormControl(this.contactDetail.address, [
       ]),
       phoneNumber: new FormControl(this.contactDetail.phoneNumber, [
+        Validators.pattern("^[0-9]*$"),
       ]),
       iban: new FormControl(this.contactDetail.iban, [
       ])

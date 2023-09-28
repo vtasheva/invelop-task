@@ -36,6 +36,7 @@ export class UpdateContactDetailComponent implements OnInit {
         address: new FormControl(data.address, [
         ]),
         phoneNumber: new FormControl(data.phoneNumber, [
+          Validators.pattern("^[0-9]*$"),
         ]),
         iban: new FormControl(data.iban, [
         ])

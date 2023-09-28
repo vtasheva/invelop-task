@@ -1,11 +1,16 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Invelop.Api.Converters;
 using Invelop.Data;
 using Invelop.Data.Abstractions;
 using Invelop.Data.Repositories;
+using Invelop.Domain.ContactDetails.Commands.Add;
 using Invelop.Domain.ContactDetails.Queries;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using System.ComponentModel;
+using System.Reflection;
 
 namespace Invelop.Api;
 
@@ -18,6 +23,9 @@ public class Program
         //builder.Services.AddAutoMapper(typeof(Program));
 
         builder.Services.AddCors();
+
+        builder.Services.AddValidatorsFromAssemblyContaining<AddContactDetailsCommandValidator>();
+        builder.Services.AddFluentValidationAutoValidation();
 
         AddMediatR(builder.Services);
 
@@ -32,7 +40,6 @@ public class Program
             .AddDbContext<MainContext>()
             .AddTransient<IContactDetailRepository, ContactDetailRepository>();
 
-       
         var app = builder.Build();
 
         app.UseHttpsRedirection();
