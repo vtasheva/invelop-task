@@ -33,10 +33,10 @@ public class MainContext : DbContext
             .HasKey(x => x.Id);
 
         modelBuilder.Entity<ContactDetail>()
-            .Property(x => x.FirstName).HasMaxLength(50);
+            .Property(x => x.FirstName).HasMaxLength(50).IsRequired();
 
         modelBuilder.Entity<ContactDetail>()
-            .Property(x => x.Surname).HasMaxLength(50);
+            .Property(x => x.Surname).HasMaxLength(50).IsRequired();
 
         modelBuilder.Entity<ContactDetail>()
             .Property(x => x.DateOfBirth).HasColumnType("Date");
