@@ -7,7 +7,7 @@
                     <div class="field col-12 md:col-6">
                         <div class="p-inputgroup">
                             <span class="p-float-label">
-                                <input type="text" id="firstname" pInputText formControlName="firstName" />
+                                <input type="text" id="firstname" pInputText formControlName="firstName" data-test-id="add-first-name" />
                                 <label htmlFor="firstname">First Name</label>
                             </span>
                         </div>
@@ -15,7 +15,7 @@
                     <div class="field col-12 md:col-6">
                         <div class="p-inputgroup">
                             <span class="p-float-label">
-                                <input type="text" id="surname" pInputText placeholder="Surname" formControlName="surname" />
+                                <input type="text" id="surname" pInputText placeholder="Surname" formControlName="surname" data-test-id="add-surname"  />
                                 <label htmlFor="surnmae">Surname</label>
                             </span>
                         </div>
@@ -59,7 +59,7 @@
                 </div>
 
                 <div class="right-align">
-                    <p-button type="submit" [disabled]="!contactDetailForm.valid">Save</p-button>
+                    <p-button type="submit" [disabled]="!contactDetailForm.valid" data-test-id="btn-add-contact-detail">Save</p-button>
                 </div>
             </form>
         </div>

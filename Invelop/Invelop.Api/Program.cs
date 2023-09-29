@@ -70,7 +70,7 @@ public class Program
         using var context = scope.ServiceProvider.GetService<MainContext>();
 
         context.Database.EnsureCreated();
-        context.Database.Migrate();
+        //context.Database.Migrate();
     }
 
     private static void AddMediatR(IServiceCollection services)

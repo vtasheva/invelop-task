@@ -5,3 +5,8 @@
     padding-left: 1rem;
     padding-right: 1em;
 } 
+
+.required-field::after {
+    content: "*";
+    color: red;
+}
